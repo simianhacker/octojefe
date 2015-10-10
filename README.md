@@ -1,2 +1,2 @@
-# octomanager
+# Octojefe
 A Kibana Plugin for Managing Teams Across an Organization
