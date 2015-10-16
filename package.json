@@ -1,0 +1,41 @@
+{
+  "name": "octojefe",
+  "version": "1.0.0",
+  "description": "A Kibana plugin for managing teams across an organization",
+  "main": "index.js",
+  "bin": {
+    "octojefe": "indexer.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simianhacker/octojefe.git"
+  },
+  "author": "Chris Cowan",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/simianhacker/octojefe/issues"
+  },
+  "homepage": "https://github.com/simianhacker/octojefe#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.2.9",
+    "bluebird": "^2.10.2",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-gzip": "^1.2.0",
+    "gulp-tar": "^1.4.0",
+    "gulp-util": "^3.0.6",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.10.6",
+    "request": "^2.65.0",
+    "rimraf": "^2.4.3",
+    "rsync": "^0.4.0",
+    "yargs": "^3.27.0"
+  },
+  "dependencies": {
+    "react": "^0.14.0"
+  }
+}
