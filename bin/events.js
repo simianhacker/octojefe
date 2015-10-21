@@ -12,7 +12,12 @@ function poll() {
     type: 'repository',
     body: {
       size: 1000,
-      fields: ['issue_events_url']
+      fields: [
+        'id',
+        'full_name',
+        'name',
+        'issue_events_url'
+        ]
     }
   };
   return client.search(options)
@@ -26,6 +31,11 @@ function poll() {
               console.log('Setting refreshInterval to ', refreshInterval);
             }
             return Promise.each(data.body, function (event) {
+              event.repo = {
+                id: doc.fields.id[0],
+                name: doc.fields.name[0],
+                full_name: doc.fields.full_name[0]
+              };
               var options = {
                 index: 'octojefe',
                 type: 'event',
@@ -43,12 +53,18 @@ function poll() {
                 .then(function (event) {
                   if (event) {
                     console.log('Updating event:' + event.id);
+                    var body = event.issue;
+                    body.repo = {
+                      id: doc.fields.id[0],
+                      name: doc.fields.name[0],
+                      full_name: doc.fields.full_name[0]
+                    };
                     var options = {
                       index: 'octojefe',
                       type: 'issue',
-                      body: event.issue,
-                      id: 'issue:' + event.issue.id
-                    }
+                      body: body,
+                      id: 'issue:' + body.id
+                    };
                     return client.index(options)
                   }
                 })
